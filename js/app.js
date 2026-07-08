@@ -2,19 +2,6 @@ function newId(){
   return "A" + Date.now() + Math.floor(Math.random()*1000);
 }
 
-async function apiGet(){
-  const res = await fetch(API_URL);
-  return res.json();
-}
-async function apiSend(action, payload){
-  const res = await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" }, // penting: hindari CORS preflight di Apps Script
-    body: JSON.stringify(Object.assign({ action }, payload))
-  });
-  return res.json();
-}
-
 function geometryToInternal(geomType, geometry){
   if(!geometry) return geomType === "point" ? [-8.65, 115.22] : [];
   if(geomType === "point"){
