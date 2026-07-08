@@ -167,7 +167,7 @@ function renderAll(){
       if(confirm('Hapus aset ini?')){
         const idToDelete = btn.dataset.id;
         features = features.filter(x => x.id !== idToDelete);
-        document.getElementById('sidePanel').innerHTML = '<div class="empty-hint">Klik salah satu poligon/titik di peta, atau tombol Edit di tabel, untuk melihat dan mengedit detail aset.</div>';
+        document.getElementById('sidePanel').innerHTML = '<div class="empty-hint">Belum ada aset yang dipilih.<br><br>Pilih salah satu aset pada tabel di bawah.</div>';
         renderAll();
         deleteAssetOnServer(idToDelete);
       }
