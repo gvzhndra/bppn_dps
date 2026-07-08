@@ -9,7 +9,7 @@
   header{background:var(--navy);color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
   header h1{font-size:16px;font-weight:600;margin:0;}
   header p{font-size:12px;margin:2px 0 0;color:#C9D6E3;}
-  .toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:14px 24px;background:var(--card);border-bottom:1px solid var(--border);align-items:center;}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:14px 24px;margin-bottom:10px; background:var(--card);border-bottom:1px solid var(--border);align-items:center;}
   button{cursor:pointer;font-size:13px;border-radius:6px;border:1px solid var(--border);background:#fff;padding:8px 14px;color:var(--text);}
   button:hover{background:#F0F2F4;}
   button.primary{background:var(--navy);color:#fff;border-color:var(--navy);}
