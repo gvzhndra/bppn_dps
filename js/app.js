@@ -52,18 +52,27 @@ map.on(L.Draw.Event.CREATED, function(e){
 });
 
 let drawing = false;
-document.getElementById('btnDraw').addEventListener('click', () => {
-  if(!drawing){
-    map.addControl(drawControl);
-    new L.Draw.Polygon(map).enable();
-    document.getElementById('btnDraw').textContent = "Batal menggambar";
-    drawing = true;
-  } else {
-    map.removeControl(drawControl);
-    document.getElementById('btnDraw').textContent = "Gambar poligon baru";
-    drawing = false;
-  }
-});
+
+const btnDraw = document.getElementById('btnDraw');
+
+if (btnDraw) {
+  btnDraw.addEventListener('click', () => {
+
+    if (!drawing) {
+      map.addControl(drawControl);
+      new L.Draw.Polygon(map).enable();
+      btnDraw.textContent = "Batal menggambar";
+      drawing = true;
+    } else {
+      map.removeControl(drawControl);
+      btnDraw.textContent = "Gambar Batas Bidang";
+      drawing = false;
+    }
+
+  });
+}
+
+
 
 document.getElementById('btnAddPoint').addEventListener('click', () => {
   const center = map.getCenter();
