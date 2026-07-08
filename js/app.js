@@ -183,10 +183,14 @@ function renderAll(){
     });
   });
 
+  const belumPunyaKoordinat = vis.filter(a => !a.point && !a.coords).length;
+
+  const batasBelumDitemukan = vis.filter(a => a.geomType !== "polygon").length;
+
   document.getElementById('statTotal').textContent = vis.length;
   document.getElementById('statLuas').textContent = vis.reduce((s,a)=>s+Number(a.props.luas),0).toLocaleString('id-ID');
-  document.getElementById('statTitik').textContent = vis.filter(a => !a.point && !a.coords).length;
-  document.getElementById('statPolygon').textContent = vis.filter(a => a.geomType !== "polygon").length;
+  document.getElementById('statTitik').textContent = belumPunyaKoordinat;
+  document.getElementById('statPolygon').textContent = batasBelumDitemukan;
 }
 
 function escapeHtml(str){
