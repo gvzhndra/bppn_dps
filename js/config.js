@@ -7,6 +7,12 @@ const statusColor = {
   "Aktif":"#4C8C3F","Proses lelang":"#B8790F","Terjual":"#6B7280","Bermasalah hukum":"#B23A3A"
 };
 
+const RESERVED_COLUMNS = [
+  "id",
+  "geom_type",
+  "geometry_json"
+];
+
 let features = [];
 let selectedId = null;
 let leafletLayers = {};
