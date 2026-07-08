@@ -1,6 +1,6 @@
 // ================= KONFIGURASI =================
 // Ganti dengan URL Web App hasil deploy Apps Script kamu (lihat Code.gs)
-const API_URL = "GANTI_DENGAN_URL_APPS_SCRIPT_ANDA";
+const API_URL = "https://script.google.com/macros/s/AKfycbz_RG7cDsnaTIR-dT4YpiOpcHZFuB5BFGh10E4fS4CyOLSF9YT8uYEyQMipm54J64c0cQ/exec";
 // =================================================
 
 const statusColor = {
