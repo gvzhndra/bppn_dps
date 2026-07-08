@@ -299,7 +299,7 @@ function selectAsset(id){
   }
   document.getElementById('btnDelete').addEventListener('click', () => {
     features = features.filter(x => x.id !== id);
-    document.getElementById('sidePanel').innerHTML = '<div class="empty-hint">Klik salah satu poligon/titik di peta, atau tombol Edit di tabel, untuk melihat dan mengedit detail aset.</div>';
+    document.getElementById('sidePanel').innerHTML = '<div class="empty-hint">Belum ada aset yang dipilih.<br><br>Pilih salah satu aset pada tabel di bawah.</div>';
     renderAll();
     deleteAssetOnServer(id);
   });
