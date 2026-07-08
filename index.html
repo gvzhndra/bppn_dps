@@ -29,11 +29,12 @@
   <select id="filterStatus">
     <option value="all">Semua status</option>
     <option value="Aktif">Aktif</option>
-    <option value="Proses lelang">Proses lelang</option>
-    <option value="Terjual">Terjual</option>
+    <option value="Dalam Penitipan">Dalam Penitipan</option>
+    <option value="Penitipan Berakhir">Penitipan Berakhir</option>
+    <option value="Pemanfaatan">Pemanfaatan</option>
     <option value="Bermasalah hukum">Bermasalah hukum</option>
   </select>
-  <button id="btnDraw">Gambar poligon baru</button>
+  <!-- <button id="btnDraw" disabled>Gambar poligon baru</button> -->
 </div>
 
 <div class="legend">
@@ -46,8 +47,8 @@
 <div class="stats">
   <div class="stat"><span>Total aset</span><strong id="statTotal">0</strong></div>
   <div class="stat"><span>Total luas (m²)</span><strong id="statLuas">0</strong></div>
-  <div class="stat"><span>Proses lelang</span><strong id="statLelang">0</strong></div>
-  <div class="stat"><span>Total nilai limit</span><strong id="statNilai">Rp0</strong></div>
+  <div class="stat"><span>Belum Punya Titik</span><strong id="statTitik">0</strong></div>
+  <div class="stat"><span>Belum Punya Polygon</span><strong id="statPolygon">Rp0</strong></div>
 </div>
 
 <div class="main">
@@ -65,7 +66,15 @@
   <p class="small-note" style="margin-top:-4px;">Belum ada GeoJSON? Tambah aset sebagai titik dulu, isi koordinatnya manual, lalu tempel GeoJSON poligon belakangan lewat panel edit begitu hasil trace-nya siap.</p>
   <table>
     <thead>
-      <tr><th>Nama aset</th><th>Lokasi</th><th>Geometri</th><th>Luas (m²)</th><th>Status</th><th>Nilai limit</th><th>PIC</th><th>Aksi</th></tr>
+      <tr>
+        <th>Kode Aset</th>
+        <th>Lokasi</th>
+        <th>Geometri</th>
+        <th>Luas (m²)</th>
+        <th>Status</th>
+        <th>No. Dokumen</th>
+        <th>Jenis Dokumen</th>
+        <th>Aksi</th></tr>
     </thead>
     <tbody id="tableBody"></tbody>
   </table>
