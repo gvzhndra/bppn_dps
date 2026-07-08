@@ -28,7 +28,7 @@
   .field label{display:block;font-size:12px;color:var(--text-mut);margin-bottom:4px;}
   .field input,.field select,.field textarea{width:100%;}
   .empty-hint{color:var(--text-mut);font-size:13px;line-height:1.6;}
-  .legend{display:flex;gap:14px;font-size:12px;color:var(--text-mut);flex-wrap:wrap;padding:0 24px 10px;}
+  .legend{display:flex;gap:14px;font-size:12px;color:var(--text-mut);flex-wrap:wrap;padding:12px 24px 10px;}
   .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px;}
   table{width:100%;border-collapse:collapse;font-size:13px;}
   th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);}
