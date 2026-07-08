@@ -4,7 +4,10 @@ const API_URL = "https://script.google.com/macros/s/AKfycbz_RG7cDsnaTIR-dT4YpiOp
 // =================================================
 
 const statusColor = {
-  "Aktif":"#4C8C3F","Proses lelang":"#B8790F","Terjual":"#6B7280","Bermasalah hukum":"#B23A3A"
+  "Dalam Penitipan":"#4C8C3F",
+  "Penitipan Berakhir":"#B8790F",
+  "Pemanfaatan":"#1F78B4",
+  "Bermasalah hukum":"#B23A3A"
 };
 
 const RESERVED_COLUMNS = [
