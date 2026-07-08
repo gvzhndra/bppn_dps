@@ -163,7 +163,7 @@ function renderAll(){
       <td>${escapeHtml(a.props.pic)}</td>
       <td style="white-space:nowrap;">
         <button class="btnEditRow" data-id="${a.id}" style="padding:4px 10px;">Edit</button>
-        <button class="btnDeleteRow danger" data-id="${a.id}" style="padding:4px 10px;">Hapus</button>
+        
       </td>`;
     tbody.appendChild(tr);
   });
