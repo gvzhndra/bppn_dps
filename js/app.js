@@ -185,8 +185,8 @@ function renderAll(){
 
   document.getElementById('statTotal').textContent = vis.length;
   document.getElementById('statLuas').textContent = vis.reduce((s,a)=>s+Number(a.props.luas),0).toLocaleString('id-ID');
-  document.getElementById('statLelang').textContent = vis.filter(a=>a.props.status==='Proses lelang').length;
-  document.getElementById('statNilai').textContent = 'Rp' + vis.reduce((s,a)=>s+Number(a.props.nilai),0).toLocaleString('id-ID');
+  document.getElementById('statTitik').textContent = vis.filter(a => !a.point && !a.coords).length;
+  document.getElementById('statPolygon').textContent = vis.filter(a => a.geomType !== "polygon").length;
 }
 
 function escapeHtml(str){
