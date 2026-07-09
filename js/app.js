@@ -115,10 +115,10 @@ function currentSearch(){
 }
 function matchesSearch(a, s){
   if(!s) return true;
-  return (a.props.nama||"").toLowerCase().includes(s)
+  return (a.props.kode_aset||"").toLowerCase().includes(s)
     || (a.props.lokasi||"").toLowerCase().includes(s)
     || (a.props.status||"").toLowerCase().includes(s)
-    || (a.props.pic||"").toLowerCase().includes(s);
+    || (a.props.jenis_dokumen||"").toLowerCase().includes(s);
 }
 
 document.getElementById('filterStatus').addEventListener('change', renderAll);
@@ -155,12 +155,12 @@ function renderAll(){
   vis.forEach(a => {
     const tr = document.createElement('tr');
     const geomLabel = a.geomType === "point" ? "Titik" : "Poligon";
-    tr.innerHTML = `<td>${escapeHtml(a.props.nama)}</td><td>${escapeHtml(a.props.lokasi)}</td>
+    tr.innerHTML = `<td>${escapeHtml(a.props.kode_aset)}</td><td>${escapeHtml(a.props.lokasi)}</td>
       <td>${geomLabel}</td>
       <td>${Number(a.props.luas).toLocaleString('id-ID')}</td>
       <td><span class="badge" style="background:${statusColor[a.props.status]||'#6B7280'}">${escapeHtml(a.props.status)}</span></td>
-      <td>Rp${Number(a.props.nilai).toLocaleString('id-ID')}</td>
-      <td>${escapeHtml(a.props.pic)}</td>
+      <td>Rp${Number(a.props.no_dokumen).toLocaleString('id-ID')}</td>
+      <td>${escapeHtml(a.props.jenis_dokumen)}</td>
       <td style="white-space:nowrap;">
         <button class="btnEditRow" data-id="${a.id}" style="padding:4px 10px;">Edit</button>
         <button class="btnDeleteRow danger" data-id="${a.id}" style="padding:4px 10px;">Hapus</button>
@@ -239,7 +239,7 @@ function selectAsset(id){
   const panel = document.getElementById('sidePanel');
   panel.innerHTML = `
     <h3>Detail aset ${a.geomType === "point" ? '<span class="badge" style="background:#6B7280;">titik</span>' : '<span class="badge" style="background:#4C8C3F;">poligon</span>'}</h3>
-    <div class="field"><label>Nama aset</label><input type="text" id="f-nama" value="${escapeHtml(a.props.nama)}"></div>
+    <div class="field"><label>Nama aset</label><input type="text" id="f-nama" value="${escapeHtml(a.props.kode_aset)}"></div>
     <div class="field"><label>Lokasi</label><input type="text" id="f-lokasi" value="${escapeHtml(a.props.lokasi)}"></div>
     <div class="row2">
       <div class="field"><label>Luas (m²)</label><input type="number" id="f-luas" value="${a.props.luas}"></div>
@@ -250,8 +250,8 @@ function selectAsset(id){
       </div>
     </div>
     <div class="row2">
-      <div class="field"><label>Nilai limit (Rp)</label><input type="number" id="f-nilai" value="${a.props.nilai}"></div>
-      <div class="field"><label>PIC / penilai</label><input type="text" id="f-pic" value="${escapeHtml(a.props.pic)}"></div>
+      <div class="field"><label>Nilai limit (Rp)</label><input type="number" id="f-nilai" value="${a.props.no_dokumen}"></div>
+      <div class="field"><label>PIC / penilai</label><input type="text" id="f-pic" value="${escapeHtml(a.props.jenis_dokumen)}"></div>
     </div>
     <div class="field"><label>Catatan</label><textarea id="f-catatan" rows="3">${escapeHtml(a.props.catatan)}</textarea></div>
     ${geomSection}
@@ -262,12 +262,12 @@ function selectAsset(id){
     </div>
   `;
   document.getElementById('btnSave').addEventListener('click', () => {
-    a.props.nama = document.getElementById('f-nama').value;
+    a.props.kode_aset = document.getElementById('f-nama').value;
     a.props.lokasi = document.getElementById('f-lokasi').value;
     a.props.luas = Number(document.getElementById('f-luas').value) || 0;
     a.props.status = document.getElementById('f-status').value;
-    a.props.nilai = Number(document.getElementById('f-nilai').value) || 0;
-    a.props.pic = document.getElementById('f-pic').value;
+    a.props.no_dokumen = Number(document.getElementById('f-nilai').value) || 0;
+    a.props.jenis_dokumen = document.getElementById('f-pic').value;
     a.props.catatan = document.getElementById('f-catatan').value;
     document.querySelectorAll('.f-extra').forEach(inp => { a.props[inp.dataset.key] = inp.value; });
     if(a.geomType === "point"){
