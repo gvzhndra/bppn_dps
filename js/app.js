@@ -40,7 +40,7 @@ map.on(L.Draw.Event.CREATED, function(e){
     id: newId(),
     geomType: "polygon",
     coords: latlngs,
-    props: { nama:"Aset baru", lokasi:"", status:"Aktif", luas:0, nilai:0, pic:"", catatan:"" }
+    props: { kode_aset:"Kode aset", lokasi:"", status:"Dalam Penitipan", luas:0, no_dokumen:0, jenis_dokumen:"", catatan:"" }
   };
   features.push(newAsset);
   renderAll();
@@ -157,9 +157,9 @@ function renderAll(){
     const geomLabel = a.geomType === "point" ? "Titik" : "Poligon";
     tr.innerHTML = `<td>${escapeHtml(a.props.kode_aset)}</td><td>${escapeHtml(a.props.lokasi)}</td>
       <td>${geomLabel}</td>
-      <td>${Number(a.props.luas).toLocaleString('id-ID')}</td>
+      <td>${(a.props.luas).toLocaleString('id-ID')}</td>
       <td><span class="badge" style="background:${statusColor[a.props.status]||'#6B7280'}">${escapeHtml(a.props.status)}</span></td>
-      <td>Rp${Number(a.props.no_dokumen).toLocaleString('id-ID')}</td>
+      <td>{Number(a.props.no_dokumen).toLocaleString('id-ID')}</td>
       <td>${escapeHtml(a.props.jenis_dokumen)}</td>
       <td style="white-space:nowrap;">
         <button class="btnEditRow" data-id="${a.id}" style="padding:4px 10px;">Edit</button>
@@ -176,7 +176,7 @@ function renderAll(){
       if(confirm('Hapus aset ini?')){
         const idToDelete = btn.dataset.id;
         features = features.filter(x => x.id !== idToDelete);
-        document.getElementById('sidePanel').innerHTML = '<div class="empty-hint">Belum ada aset yang dipilih.<br><br>Pilih salah satu aset pada tabel di bawah.</div>';
+        document.getElementById('sidePanel').innerHTML = '<div class="empty-hint">Belum ada aset yang dipilih.<br>Pilih salah satu aset pada tabel di bawah.</div>';
         renderAll();
         deleteAssetOnServer(idToDelete);
       }
@@ -239,7 +239,7 @@ function selectAsset(id){
   const panel = document.getElementById('sidePanel');
   panel.innerHTML = `
     <h3>Detail aset ${a.geomType === "point" ? '<span class="badge" style="background:#6B7280;">titik</span>' : '<span class="badge" style="background:#4C8C3F;">poligon</span>'}</h3>
-    <div class="field"><label>Nama aset</label><input type="text" id="f-nama" value="${escapeHtml(a.props.kode_aset)}"></div>
+    <div class="field"><label>Kode aset</label><input type="text" id="f-kode_aset" value="${escapeHtml(a.props.kode_aset || "")}"></div>
     <div class="field"><label>Lokasi</label><input type="text" id="f-lokasi" value="${escapeHtml(a.props.lokasi)}"></div>
     <div class="row2">
       <div class="field"><label>Luas (m²)</label><input type="number" id="f-luas" value="${a.props.luas}"></div>
@@ -250,8 +250,8 @@ function selectAsset(id){
       </div>
     </div>
     <div class="row2">
-      <div class="field"><label>Nilai limit (Rp)</label><input type="number" id="f-nilai" value="${a.props.no_dokumen}"></div>
-      <div class="field"><label>PIC / penilai</label><input type="text" id="f-pic" value="${escapeHtml(a.props.jenis_dokumen)}"></div>
+      <div class="field"><label>No. Dokumen </label><input type="number" id="f-no_dokumen" value="${a.props.no_dokumen || ""}"></div>
+      <div class="field"><label>Jenis dokumen / penilai</label><input type="text" id="f-jenis_dokumen" value="${escapeHtml(a.props.jenis_dokumen || "")}"></div>
     </div>
     <div class="field"><label>Catatan</label><textarea id="f-catatan" rows="3">${escapeHtml(a.props.catatan)}</textarea></div>
     ${geomSection}
@@ -262,12 +262,12 @@ function selectAsset(id){
     </div>
   `;
   document.getElementById('btnSave').addEventListener('click', () => {
-    a.props.kode_aset = document.getElementById('f-nama').value;
+    a.props.kode_aset = document.getElementById('f-kode_aset').value;
     a.props.lokasi = document.getElementById('f-lokasi').value;
     a.props.luas = Number(document.getElementById('f-luas').value) || 0;
     a.props.status = document.getElementById('f-status').value;
-    a.props.no_dokumen = Number(document.getElementById('f-nilai').value) || 0;
-    a.props.jenis_dokumen = document.getElementById('f-pic').value;
+    a.props.no_dokumen = Number(document.getElementById('f-no_dokumen').value) || 0;
+    a.props.jenis_dokumen = document.getElementById('f-jenis_dokumen').value;
     a.props.catatan = document.getElementById('f-catatan').value;
     document.querySelectorAll('.f-extra').forEach(inp => { a.props[inp.dataset.key] = inp.value; });
     if(a.geomType === "point"){
