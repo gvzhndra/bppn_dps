@@ -80,7 +80,7 @@ document.getElementById('btnAddPoint').addEventListener('click', () => {
     id: newId(),
     geomType: "point",
     point: [center.lat, center.lng],
-    props: { nama:"Aset baru (titik)", lokasi:"", status:"Aktif", luas:0, nilai:0, pic:"", catatan:"Geometri masih titik perkiraan, belum ada hasil trace." }
+    props: { kode_aset:"Aset baru (titik)", lokasi:"", status:"", luas:0, no_dukumen:0, jenis_dokumen:"", catatan:"Geometri masih titik perkiraan, belum ada hasil trace." }
   };
   features.push(newAsset);
   renderAll();
@@ -159,7 +159,7 @@ function renderAll(){
       <td>${geomLabel}</td>
       <td>${(a.props.luas).toLocaleString('id-ID')}</td>
       <td><span class="badge" style="background:${statusColor[a.props.status]||'#6B7280'}">${escapeHtml(a.props.status)}</span></td>
-      <td>{Number(a.props.no_dokumen).toLocaleString('id-ID')}</td>
+      <td>${escapeHtml(a.props.no_dokumen || "")}</td>
       <td>${escapeHtml(a.props.jenis_dokumen)}</td>
       <td style="white-space:nowrap;">
         <button class="btnEditRow" data-id="${a.id}" style="padding:4px 10px;">Edit</button>
@@ -251,7 +251,7 @@ function selectAsset(id){
     </div>
     <div class="row2">
       <div class="field"><label>No. Dokumen </label><input type="number" id="f-no_dokumen" value="${a.props.no_dokumen || ""}"></div>
-      <div class="field"><label>Jenis dokumen / penilai</label><input type="text" id="f-jenis_dokumen" value="${escapeHtml(a.props.jenis_dokumen || "")}"></div>
+      <div class="field"><label>Jenis dokumen</label><input type="text" id="f-jenis_dokumen" value="${escapeHtml(a.props.jenis_dokumen || "")}"></div>
     </div>
     <div class="field"><label>Catatan</label><textarea id="f-catatan" rows="3">${escapeHtml(a.props.catatan)}</textarea></div>
     ${geomSection}
