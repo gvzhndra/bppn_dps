@@ -250,7 +250,7 @@ function selectAsset(id){
       </div>
     </div>
     <div class="row2">
-      <div class="field"><label>No. Dokumen </label><input type="number" id="f-no_dokumen" value="${a.props.no_dokumen || ""}"></div>
+      <div class="field"><label>No. Dokumen </label><input type="text" id="f-no_dokumen" value="${a.props.no_dokumen || ""}"></div>
       <div class="field"><label>Jenis dokumen</label><input type="text" id="f-jenis_dokumen" value="${escapeHtml(a.props.jenis_dokumen || "")}"></div>
     </div>
     <div class="field"><label>Catatan</label><textarea id="f-catatan" rows="3">${escapeHtml(a.props.catatan)}</textarea></div>
@@ -266,7 +266,7 @@ function selectAsset(id){
     a.props.lokasi = document.getElementById('f-lokasi').value;
     a.props.luas = Number(document.getElementById('f-luas').value) || 0;
     a.props.status = document.getElementById('f-status').value;
-    a.props.no_dokumen = Number(document.getElementById('f-no_dokumen').value) || 0;
+    a.props.no_dokumen = document.getElementById('f-no_dokumen').value);
     a.props.jenis_dokumen = document.getElementById('f-jenis_dokumen').value;
     a.props.catatan = document.getElementById('f-catatan').value;
     document.querySelectorAll('.f-extra').forEach(inp => { a.props[inp.dataset.key] = inp.value; });
