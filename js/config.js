@@ -20,4 +20,13 @@ let features = [];
 let selectedId = null;
 let leafletLayers = {};
 let sheetHeaders = [];
-const CORE_PROPS = ["nama","lokasi","status","luas","nilai","pic","catatan"];
+
+const CORE_PROPS = [
+    "kode_aset",
+    "lokasi",
+    "status",
+    "luas",
+    "no_dokumen",
+    "jenis_dokumen",
+    "catatan"
+];
