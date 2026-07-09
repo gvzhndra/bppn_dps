@@ -266,7 +266,7 @@ function selectAsset(id){
     a.props.lokasi = document.getElementById('f-lokasi').value;
     a.props.luas = Number(document.getElementById('f-luas').value) || 0;
     a.props.status = document.getElementById('f-status').value;
-    a.props.no_dokumen = document.getElementById('f-no_dokumen').value);
+    a.props.no_dokumen = document.getElementById('f-no_dokumen').value;
     a.props.jenis_dokumen = document.getElementById('f-jenis_dokumen').value;
     a.props.catatan = document.getElementById('f-catatan').value;
     document.querySelectorAll('.f-extra').forEach(inp => { a.props[inp.dataset.key] = inp.value; });
